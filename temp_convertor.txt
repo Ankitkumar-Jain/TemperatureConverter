@@ -1,0 +1,41 @@
+from tkinter import *
+
+
+def calculate():
+    c = int(celciusentry.get())
+    far = 9/5 * c + 32
+    fentry.config(state='normal')
+    fentry.insert(0, far)
+
+
+def clear():
+    celciusentry.delete(0, END)
+    fentry.delete(0, END)
+
+
+window = Tk()
+window.title("Convert")
+window.config(padx=50, pady=50)
+
+
+label1 = Label(text='Temperature in Cel :')
+label1.grid(row=0, column=0, pady=10)
+
+label2 = Label(text='Temperature in F : ')
+label2.grid(row=1, column=0, pady=10)
+
+
+celciusentry = Entry(width=35)
+celciusentry.focus()
+celciusentry.grid(row=0, column=1, pady=10)
+fentry = Entry(width=35, state='disabled')
+fentry.grid(row=1, column=1, pady=10)
+
+
+button = Button(text='Convert', width=50, command=calculate)
+button.grid(row=3, column=0, columnspan=2, pady=10)
+
+button2 = Button(text='Clear', width=50, command=clear)
+button2.grid(row=4, column=0, columnspan=2)
+
+window.mainloop()
